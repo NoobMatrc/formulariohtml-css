@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta de Satisfacción - Hospital</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <form id="surveyForm" class="survey-form">
+            <div class="form-header">
+                <div class="hospital-icon">🏥</div>
+                <h2>Encuesta de Satisfacción</h2>
+                <p class="subtitle">Tu opinión nos ayuda a mejorar nuestros servicios</p>
+            </div>
+
+            <div class="form-group">
+                <label for="patientName">Nombre del paciente:</label>
+                <input 
+                    type="text" 
+                    id="patientName" 
+                    name="patientName" 
+                    placeholder="Ingresa tu nombre completo"
+                    required
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="department">Departamento visitado:</label>
+                <select id="department" name="department" required>
+                    <option value="">Selecciona un departamento</option>
+                    <option value="pediatria">👶 Pediatría</option>
+                    <option value="cirugia">🔬 Cirugía</option>
+                    <option value="traumatologia">🦴 Traumatología</option>
+                    <option value="cardiologia">❤️ Cardiología</option>
+                </select>
+            </div>
+
+            <div class="form-group satisfaction-group">
+                <label class="main-label">Nivel de satisfacción:</label>
+                <p class="helper-text">Selecciona una opción que mejor represente tu experiencia</p>
+                
+                <div class="satisfaction-options">
+                    <input 
+                        type="radio" 
+                        id="verySatisfied" 
+                        name="satisfaction" 
+                        value="muy-satisfecho" 
+                        required
+                    >
+                    <label for="verySatisfied" class="satisfaction-button very-satisfied">
+                        <span class="emoji">😄</span>
+                        <span class="text">Muy satisfecho</span>
+                    </label>
+
+                    <input 
+                        type="radio" 
+                        id="satisfied" 
+                        name="satisfaction" 
+                        value="satisfecho"
+                    >
+                    <label for="satisfied" class="satisfaction-button satisfied">
+                        <span class="emoji">🙂</span>
+                        <span class="text">Satisfecho</span>
+                    </label>
+
+                    <input 
+                        type="radio" 
+                        id="regular" 
+                        name="satisfaction" 
+                        value="regular"
+                    >
+                    <label for="regular" class="satisfaction-button regular">
+                        <span class="emoji">😐</span>
+                        <span class="text">Regular</span>
+                    </label>
+
+                    <input 
+                        type="radio" 
+                        id="unsatisfied" 
+                        name="satisfaction" 
+                        value="insatisfecho"
+                    >
+                    <label for="unsatisfied" class="satisfaction-button unsatisfied">
+                        <span class="emoji">😞</span>
+                        <span class="text">Insatisfecho</span>
+                    </label>
+                </div>
+                <span class="error-message" id="satisfactionError"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="comments">Comentarios:</label>
+                <p class="helper-text">Cuéntanos más sobre tu experiencia (opcional)</p>
+                <textarea 
+                    id="comments" 
+                    name="comments" 
+                    placeholder="Escribe aquí tus comentarios, sugerencias o cualquier detalle que quieras compartir..."
+                ></textarea>
+            </div>
+
+            <button type="submit" class="submit-button">
+                <span>Enviar encuesta</span>
+                <span class="button-icon">📨</span>
+            </button>
+        </form>
+
+        <div id="successMessage" class="success-message hidden">
+            <div class="success-content">
+                <div class="success-icon">✓</div>
+                <h3>¡Gracias por tu opinión!</h3>
+                <div id="surveyResults" class="survey-results"></div>
+                <p class="success-note">Tu feedback es muy valioso para nosotros</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

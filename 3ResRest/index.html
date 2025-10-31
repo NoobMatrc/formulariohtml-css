@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu Mesa - Restaurante</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <form id="reservationForm" class="reservation-form">
+            <div class="form-header">
+                <h2>🍽️ Reserva tu Mesa</h2>
+                <p class="subtitle">Experiencia culinaria excepcional te espera</p>
+            </div>
+
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="customerName">Nombre de la persona que reserva:</label>
+                    <input type="text" id="customerName" name="customerName" placeholder="Juan Pérez" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="date">Fecha:</label>
+                    <input type="date" id="date" name="date" required>
+                    <span class="error-message" id="dateError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="time">Hora:</label>
+                    <input type="time" id="time" name="time" required>
+                    <span class="error-message" id="timeError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="numberOfPeople">Número de personas:</label>
+                    <select id="numberOfPeople" name="numberOfPeople" required>
+                        <option value="">Selecciona...</option>
+                        <option value="1">1 persona</option>
+                        <option value="2">2 personas</option>
+                        <option value="3">3 personas</option>
+                        <option value="4">4 personas</option>
+                        <option value="5">5 personas</option>
+                        <option value="6">6 personas</option>
+                        <option value="7">7 personas</option>
+                        <option value="8">8 personas</option>
+                        <option value="9">9 personas</option>
+                        <option value="10">10 personas</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Preferencia de ubicación:</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="location" value="interior" required>
+                            <span class="radio-text">🏠 Interior</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="location" value="terraza">
+                            <span class="radio-text">🌿 Terraza</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="comments">Comentarios adicionales: <span class="optional">(opcional)</span></label>
+                    <textarea id="comments" name="comments" rows="4" placeholder="Alergias alimentarias, ocasión especial, peticiones especiales..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-button">Reservar ahora</button>
+        </form>
+
+        <div id="successMessage" class="success-message hidden">
+            <div class="success-icon">✓</div>
+            <h3>¡Reserva Confirmada!</h3>
+            <div id="reservationDetails" class="reservation-details"></div>
+            <p class="success-note">Nos vemos pronto. ¡Buen provecho!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

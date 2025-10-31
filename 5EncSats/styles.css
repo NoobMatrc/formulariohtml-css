@@ -1,0 +1,449 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 700px;
+}
+
+.survey-form {
+    background: white;
+    padding: 45px;
+    border-radius: 20px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-bottom: 25px;
+    border-bottom: 3px solid #e8f4f8;
+}
+
+.hospital-icon {
+    font-size: 60px;
+    margin-bottom: 15px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+h2 {
+    color: #2c3e50;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #7f8c8d;
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.main-label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #2c3e50;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.helper-text {
+    color: #95a5a6;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+input[type="text"],
+select {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+input[type="text"]:focus,
+select:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.1);
+    background-color: white;
+}
+
+/* ============================================ */
+/* RADIO BUTTONS ESTILIZADOS COMO BOTONES COLORIDOS */
+/* ============================================ */
+
+.satisfaction-group {
+    margin-bottom: 35px;
+}
+
+.satisfaction-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.satisfaction-options input[type="radio"] {
+    display: none;
+}
+
+.satisfaction-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 15px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid transparent;
+    font-weight: 600;
+    min-height: 120px;
+    position: relative;
+    overflow: hidden;
+}
+
+.satisfaction-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.satisfaction-button .emoji,
+.satisfaction-button .text {
+    position: relative;
+    z-index: 1;
+}
+
+.satisfaction-button .emoji {
+    font-size: 40px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.satisfaction-button .text {
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Muy satisfecho - Verde */
+.satisfaction-button.very-satisfied::before {
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+}
+
+.satisfaction-button.very-satisfied {
+    color: white;
+}
+
+/* Satisfecho - Verde claro */
+.satisfaction-button.satisfied::before {
+    background: linear-gradient(135deg, #a8e6cf 0%, #7ed6a8 100%);
+}
+
+.satisfaction-button.satisfied {
+    color: #2c3e50;
+}
+
+/* Regular - Amarillo/Naranja */
+.satisfaction-button.regular::before {
+    background: linear-gradient(135deg, #ffd93d 0%, #ffb347 100%);
+}
+
+.satisfaction-button.regular {
+    color: #2c3e50;
+}
+
+/* Insatisfecho - Rojo */
+.satisfaction-button.unsatisfied::before {
+    background: linear-gradient(135deg, #ff6b6b 0%, #e74c3c 100%);
+}
+
+.satisfaction-button.unsatisfied {
+    color: white;
+}
+
+/* Efecto hover */
+.satisfaction-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.satisfaction-button:hover::before {
+    opacity: 1;
+}
+
+.satisfaction-button:hover .emoji {
+    transform: scale(1.2);
+}
+
+/* Estado seleccionado */
+input[type="radio"]:checked + .satisfaction-button {
+    transform: scale(1.05);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+}
+
+input[type="radio"]:checked + .satisfaction-button::before {
+    opacity: 1;
+}
+
+input[type="radio"]:checked + .satisfaction-button.very-satisfied {
+    border-color: #27ae60;
+}
+
+input[type="radio"]:checked + .satisfaction-button.satisfied {
+    border-color: #7ed6a8;
+}
+
+input[type="radio"]:checked + .satisfaction-button.regular {
+    border-color: #ffb347;
+}
+
+input[type="radio"]:checked + .satisfaction-button.unsatisfied {
+    border-color: #e74c3c;
+}
+
+/* ============================================ */
+/* TEXTAREA CON EXPANSIÓN ANIMADA */
+/* ============================================ */
+
+textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    resize: vertical;
+    min-height: 80px;
+    background-color: #f8f9fa;
+    /* Transición animada */
+    transition: all 0.4s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 0 4px rgba(79, 172, 254, 0.1);
+    background-color: white;
+    /* Expansión animada al hacer clic */
+    min-height: 180px;
+    transform: scale(1.02);
+}
+
+textarea::placeholder {
+    color: #95a5a6;
+    transition: opacity 0.3s ease;
+}
+
+textarea:focus::placeholder {
+    opacity: 0.7;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 18px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(79, 172, 254, 0.5);
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+}
+
+.submit-button:active {
+    transform: translateY(-1px);
+}
+
+.button-icon {
+    font-size: 22px;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 8px;
+    display: block;
+}
+
+.success-message {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+    animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.success-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 45px;
+    margin: 0 auto 25px;
+    animation: scaleIn 0.5s ease 0.2s both;
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+.success-message h3 {
+    color: #2ecc71;
+    font-size: 28px;
+    margin-bottom: 25px;
+}
+
+.survey-results {
+    background: #f8f9fa;
+    padding: 25px;
+    border-radius: 12px;
+    margin: 20px 0;
+    text-align: left;
+    border-left: 5px solid #4facfe;
+}
+
+.survey-results p {
+    margin: 10px 0;
+    color: #555;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+.survey-results strong {
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.survey-results .satisfaction-level {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.success-note {
+    color: #95a5a6;
+    font-size: 15px;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .survey-form {
+        padding: 35px 25px;
+    }
+    
+    h2 {
+        font-size: 28px;
+    }
+    
+    .satisfaction-options {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    .satisfaction-button {
+        min-height: 100px;
+    }
+    
+    .success-message {
+        padding: 40px 25px;
+    }
+}
